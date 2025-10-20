@@ -14,7 +14,7 @@
 #   canonical source tree.
 all:
 
-TOP = /root/sqlite_exp/sqlite-autoconf-3500400
+TOP = /root/2025-5-sqlite
 
 PACKAGE_VERSION = 3.50.4
 
@@ -31,7 +31,7 @@ T.lib = .a
 #
 # Autotools-compatibility dirs
 #
-prefix      = /root/sqlite_exp/sqlite-autoconf-3500400/inst
+prefix      = /root/2025-5-sqlite/inst
 datadir     = ${prefix}/share
 mandir      = ${datadir}/man
 includedir  = ${prefix}/include
@@ -71,6 +71,17 @@ CFLAGS.readline =
 LDFLAGS.rt = 
 LDFLAGS.icu = 
 CFLAGS.icu = 
+
+# added
+PYTHON   := $(shell command -v python3)
+PYVER    := $(shell $(PYTHON) -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
+PYCFG    := $(shell command -v python$(PYVER)-config 2>/dev/null || command -v python3-config)
+
+CFLAGS.python  = $(shell $(PYCFG) --cflags --embed)
+LDFLAGS.python = $(shell $(PYCFG) --ldflags --embed)
+
+CFLAGS  += $(CFLAGS.python)
+LDFLAGS += $(LDFLAGS.python)
 
 # INSTALL reminder: we specifically do not strip binaries,
 # as discussed in https://sqlite.org/forum/forumpost/9a67df63eda9925c.
