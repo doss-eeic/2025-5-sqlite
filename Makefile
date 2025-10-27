@@ -252,7 +252,9 @@ sqlite3-shell-static.flags.1 = -static
 sqlite3-shell-static.flags.0 =
 sqlite3$(T.exe): $(TOP)/shell.c $(sqlite3-shell-deps.$(ENABLE_STATIC_SHELL))
 	$(CC) -o $@ \
-		$(TOP)/shell.c $(sqlite3-shell-link-flags.$(ENABLE_STATIC_SHELL)) \
+		$(TOP)/shell.c \
+		$(TOP)/pyfunc_ext.c \
+		$(sqlite3-shell-link-flags.$(ENABLE_STATIC_SHELL)) \
 		$(sqlite3-shell-static.flags.$(STATIC_CLI_SHELL)) \
 		-I. $(OPT_FEATURE_FLAGS) $(SHELL_OPT) \
 		$(CFLAGS) $(CFLAGS.readline) $(CFLAGS.icu) \
