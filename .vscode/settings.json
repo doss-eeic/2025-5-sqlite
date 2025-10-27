@@ -1,5 +1,6 @@
 {
 	"files.associations": {
-		"sqlite3ext.h": "c"
+		"sqlite3ext.h": "c",
+		"cstdlib": "c"
 	}
 }
