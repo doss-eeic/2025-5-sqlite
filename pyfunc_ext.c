@@ -79,10 +79,10 @@ int register_pyfunc(sqlite3 *db, const char *zName, int nArg, PyObject *callable
 
 	int rc = sqlite3_create_function_v2(
 		db, // データベース
-		SqlFunc, // 作成するSQL関数の名前
+		zName, // 作成するSQL関数の名前
 		-1, // 引数の個数（-1とすると任意）
 		SQLITE_UTF8 | SQLITE_DETERMINISTIC, // テキストエンコーディング
-		pFunc, // 実行用のC関数に渡すpythonオブジェクト
+		callable, // 実行用のC関数に渡すpythonオブジェクト
 		exec_python_inC, // 実行用のC言語関数
 		NULL, 
 		NULL, 
