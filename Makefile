@@ -250,6 +250,8 @@ STATIC_CLI_SHELL = 0
 #
 sqlite3-shell-static.flags.1 = -static
 sqlite3-shell-static.flags.0 =
+
+# pyfunc_ext.cを追加
 sqlite3$(T.exe): $(TOP)/shell.c $(sqlite3-shell-deps.$(ENABLE_STATIC_SHELL))
 	$(CC) -o $@ \
 		$(TOP)/shell.c \

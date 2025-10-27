@@ -4,3 +4,9 @@ def multiply(a,b):
     for i in range(0, a):
         c = c + b
     return c
+
+def mul_float(a, b):
+	return a * b
+
+def unite_strings(a, b):
+	return a + b
