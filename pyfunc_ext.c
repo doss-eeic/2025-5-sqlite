@@ -1,6 +1,5 @@
 #include "pyudf.h"
 
-/* --- 元の実装に合わせた実行関数 --- */
 void exec_python_inC(
 	sqlite3_context *context,
 	int argc,
